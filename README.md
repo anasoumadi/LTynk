@@ -70,4 +70,3 @@ Open [http://localhost:9002](http://localhost:9002) in your browser.
 ---
 
 Crafted with ❤️ by **anasoumadi** (AS).  
-*For professional inquiries or contributions, please feel free to open an issue or pull request.*
