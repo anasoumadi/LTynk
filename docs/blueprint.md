@@ -1,4 +1,4 @@
-# **App Name**: Heartfelt Editor
+# **App Name**: LTynk
 
 ## Core Features:
 
