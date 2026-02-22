@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Sand & Zinc Palette - Light Mode */
+    --background: 30 25% 97%; /* Paper */
+    --foreground: 215 25% 27%; /* Deep Slate */
+    
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 215 25% 27%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+    
+    --primary: 39 44% 70%; /* Sand */
+    --primary-foreground: 215 25% 27%;
+    
+    --secondary: 200 10% 70%; /* Zinc */
+    --secondary-foreground: 215 25% 27%;
+    
+    --muted: 210 17% 93%; /* Light Zinc */
+    --muted-foreground: 215 14% 47%; /* Dark Zinc */
+    
+    --accent: 140 28% 66%; /* Sage */
+    --accent-foreground: 215 25% 27%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 200 15% 84%; /* Zinc Border */
+    --input: 210 17% 93%; /* Light Zinc Input */
+    --ring: 39 44% 70%; /* Sand */
+    
+    --radius: 0.35rem;
+  }
+
+  .dark {
+    /* Sand & Zinc Palette - Dark Mode */
+    --background: 210 10% 10%;
+    --foreground: 210 17% 93%;
+    
+    --card: 210 10% 15%;
+    --card-foreground: 210 17% 93%;
+    
+    --popover: 210 10% 10%;
+    --popover-foreground: 210 17% 93%;
+    
+    --primary: 39 31% 57%; /* Sand Dark */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 195 9% 41%; /* Zinc Dark */
+    --secondary-foreground: 210 17% 93%;
+    
+    --muted: 210 10% 20%;
+    --muted-foreground: 195 12% 72%;
+    
+    --accent: 140 28% 66%; /* Sage */
+    --accent-foreground: 210 10% 23%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 17% 93%;
+    
+    --border: 195 9% 41%; /* Zinc Dark */
+    --input: 195 9% 41%;
+    --ring: 39 31% 57%; /* Sand Dark */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom overlay scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50 transition-colors;
+}
+
+/* High density editor tweaks */
+.selection\:bg-primary\/30::selection {
+  background-color: hsla(var(--primary) / 0.3);
+}
+
+textarea {
+  line-height: inherit;
+}
+
+/* Hidden Formatting Markers - Overlay Strategy */
+.hidden-char-wrapper {
+  position: relative;
+  display: inline;
+  white-space: pre-wrap;
+}
+
+.hidden-char-wrapper::before {
+  content: attr(data-symbol);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.5;
+  color: hsl(var(--primary));
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 0.9em;
+  z-index: 1;
+}
+
+/* Active editor formatting visibility */
+.custom-editor-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
